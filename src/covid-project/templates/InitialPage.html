@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+<!--Author: Venkata Sai Madhav Kaza-->
+<!--Globalid: 793629-->
+<!--Email: kaza2v@cmich.edu-->
+
+{% block styles %}
+    {{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+{% endblock %}
+<!--form starts-->
+
+{% block body %}
+ <form method="get" action="{% url 'output' %}" autocomplete="on">
+    {% csrf_token %}
+    <div class="container"><!--using responsive css-->
+    <div class="row">
+    <center><h3>Covid-19 Cases Prediction Using Facebook designed Prophet ML</h3></center>
+    <center><h4>Please enter a date between March 1, 2020 to October 23, 2023</h4></center>
+    </div>
+    <center>
+    <div class="row">
+      <div class="col-25">
+          <label for="Firstname">First Name<sub class="required">*</sub></label>
+      </div>
+      <div class="col-75">
+          <input type="text" id="fname" name="fname" placeholder="Your First Name.." required="" autofocus="">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+          <label for="Lastname">Last Name<sub class="required">*</sub></label>
+      </div>
+      <div class="col-75">
+          <input type="text" id="lname" name="lname" placeholder="Your Last Name.." required="" autofocus="">
+      </div>
+      <div class="row">
+      <div class="col-25">
+          <label for="Date">Future Date<sub class="required">*</sub></label>
+      </div>
+      <div class="col-75">
+          <input type="date" id="date" name="date" placeholder="Your Future Date" required="" autofocus="" min = "2020-03-01" max = "2023-10-23">
+      </div>
+    </div>
+    </center>
+    </div>
+    <br>
+    <br>
+    <center>
+    <div class="row"><!--Submit Button-->
+      <input type="submit" value="Get Value">
+    </div>
+  </center>
+   <br>
+  </form>
+{% endblock %}

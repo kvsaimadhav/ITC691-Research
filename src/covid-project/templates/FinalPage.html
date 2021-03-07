@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+<!--Author: Venkata Sai Madhav Kaza-->
+<!--Globalid: 793629-->
+<!--Email: kaza2v@cmich.edu-->
+
+{% block styles %}
+    {{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container"><!--using responsive css-->
+    <div class="row">
+    <center><h3>Welcome {{ request.session.name }}</h3></center>
+    </div>
+    <br>
+    <div class="container"><!--using responsive css-->
+    <div class="row">
+    <h4><center><b>Hello {{request.session.name }}, Date entered for Covid Prediction is {{date}} <br></center>
+    <br>
+    <center>
+    <table border = "1">
+    <tr>
+        <td>Date</td>
+        <td>Predicted Cases</td>
+        <td>Predicted Cases Lower Range </td>
+        <td>Predicted Cases Upper Range </td>
+    </tr>
+    <tr>
+        <td><center>{{date}}</center></td>
+        <td><center>{{cases}}</center></td>
+        <td><center>{{cases_lower}}</center></td>
+        <td><center>{{cases_upper}}</center></td>
+    </tr>
+    </table>
+    </center>
+    <br>
+    <center><br>Please Continue predicting Covid-19 Cases by this application By Backing the Page<br></center>
+    </h4>
+    </div>
+    </div>
+{% endblock %}
+

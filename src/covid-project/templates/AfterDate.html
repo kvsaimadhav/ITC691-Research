@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+<!--Author: Venkata Sai Madhav Kaza-->
+<!--Globalid: 793629-->
+<!--Email: kaza2v@cmich.edu-->
+
+{% block styles %}
+    {{ block.super }}
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container"><!--using responsive css-->
+    <div class="row">
+    <center><h3>Welcome {{ request.session.name }}</h3></center>
+    </div>
+    <br>
+    <div class="container"><!--using responsive css-->
+    <div class="row">
+    <h4><center><b>Hello {{request.session.name }}, Date entered for Covid Prediction is {{date}} <br></center>
+    <center><br>The COVID-19 Cases prediction by this application ended at October 23, 2023, it seems you have entered a date after prediction of COVID cases ended<br></center>    
+    <center><br>Please Continue predicting Covid-19 Cases by this application by Navigating to the Prediction Page<br></center>
+    <center><br><a href="{% url 'prediction' %}">Navigate to Prediction Page</a><br></center>
+    </h4>
+    </div>
+    </div>
+{% endblock %}

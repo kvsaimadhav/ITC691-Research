@@ -30,23 +30,37 @@ def output(request):
 		datem = int(date.split('-')[1])
 		dated = int(date.split('-')[2])
 		dateymd = dt.date(datey,datem,dated)
-		for i in range(0,length):
- 		    if result.iloc[i]['ds'] == dateymd :
- 			    cases.append(result.iloc[i]['yhat'])
- 			    cases.append(result.iloc[i]['yhat_lower'])
- 			    cases.append(result.iloc[i]['yhat_upper'])
-		resultdic = {
-			'date' : dateymd,
-			'cases': int(cases[0]),
-			'cases_lower': int(cases[1]),
-			'cases_upper': int(cases[2])
-		}
-		return render(request, "FinalPage.html",resultdic)
+		datebd = dt.date(2020,3,1)
+		datead = dt.date(2023,10,23)
+		if dateymd >= datebd and dateymd <= datead:	
+			for i in range(0,length):
+ 				if result.iloc[i]['ds'] == dateymd:
+ 					cases.append(result.iloc[i]['yhat'])
+ 					cases.append(result.iloc[i]['yhat_lower'])
+ 					cases.append(result.iloc[i]['yhat_upper'])
+			resultdic = {
+				'date' : dateymd,
+				'cases': int(cases[0]),
+				'cases_lower': int(cases[1]),
+				'cases_upper': int(cases[2])
+			}
+			return render(request, "FinalPage.html",resultdic)
+		elif dateymd > datead:
+			resultdic = {
+				'date' : dateymd
+			}
+			return render(request,"AfterDate.html",resultdic)
 	else:
 		return render(request,"error-404.html")
 
 def report(request):
 	if request.method == "GET":
 		return render(request, "form_two.html")
+	else:
+		return render(request,"error-404.html")
+
+def prediction(request):
+	if request.method == "GET":
+		return render(request,"InitialPage.html")
 	else:
 		return render(request,"error-404.html")
